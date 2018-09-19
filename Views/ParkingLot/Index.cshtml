@@ -1,0 +1,53 @@
+﻿@model ParkingLot.Models.Lot
+
+@{
+    ViewData["Title"] = "Poonam's Parking Lot";
+}
+
+<div>
+    <h4>Welcome!</h4>
+    <p>Available Spots: @Model.availableSpots</p>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayName("Name: ")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+
+        </dd>
+
+        <dt>
+            @Html.DisplayName("Address: ")
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+
+        </dd>
+        @{
+        if (Model.availableSpots > 0)
+        {
+            <br />
+            <dt></dt>
+            <dd>
+
+                @Html.ActionLink("Park", "AddVehicle")
+
+            </dd>
+    }
+        }
+        @{
+        if (Model.availableSpots < 3)
+        {
+                <br/>
+            <dt></dt>
+            <dd>
+
+                @Html.ActionLink("Remove", "RemoveVehicle")
+
+            </dd>
+    }
+        }
+
+    </dl>
+
+</div>

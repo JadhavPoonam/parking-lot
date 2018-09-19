@@ -1,0 +1,24 @@
+﻿@model ParkingLot.Models.Vehicle
+@{
+    ViewData["Title"] = "Remove Vehicle";
+}
+<div>
+    <h4>Poonam's Lot</h4>
+    @if(ViewData["Message"] != null)
+    {
+        <p>@ViewData["Message"]</p>
+    }
+    else if (Model != null && !Model.spotId.HasValue)
+    {
+        <p>Have a good Day!</p>
+    }
+    else
+    {
+        <form action="RemoveVehicle" method="post">
+            License Plate: <input asp-for="licensePlate" type="text" />
+            <br />
+
+            <input type="submit" name="Submit" />
+        </form>
+    }
+</div>

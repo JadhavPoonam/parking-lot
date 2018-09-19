@@ -1,0 +1,35 @@
+﻿@model ParkingLot.Models.Vehicle
+@{
+    ViewData["Title"] = "Vehicle Details";
+}
+<div>
+    <h4>Poonam's Lot</h4>
+    @if (ViewData["Message"] != null)
+    {
+        <p>@ViewData["Message"]</p>
+    }
+    else if (Model.spotId.HasValue)
+    {
+        <p>Vehicle number: @Model.licensePlate</p>
+        <p>Spot Assigned: @Model.spotId</p>
+    }
+    else
+    {
+        <form action="AddVehicle" method="post">
+            License Plate: <input asp-for="licensePlate" type="text" />
+            <br />
+            <label>Size of Vehicle:</label>
+            <br />
+            <input asp-for="type" type="radio" value="1" /> Small
+            <br />
+
+            <input asp-for="type" type="radio" value="2" /> Medium
+            <br />
+
+            <input asp-for="type" type="radio" value="3" /> Large
+            <br />
+
+            <input type="submit" name="Find me a spot" />
+        </form>
+    }
+</div>
